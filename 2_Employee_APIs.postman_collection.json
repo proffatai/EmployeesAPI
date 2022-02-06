@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "24e87633-a088-4b05-bd78-cd9960946a21",
+		"name": "2: Employee APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Viewing all the employees",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var response= JSON.parse(responseBody);\r",
+							"\r",
+							"tests[\"Checking if body contains status\"]=responseBody.has(\"status\"); // status appear in the body of the file\r",
+							"tests[\"Checking if body contains data\"]=responseBody.has(\"data\"); // data appear in the body of the file\r",
+							"tests[\"Checking if body contains id\"]=responseBody.has(\"id\"); // data appear in the body of the file\r",
+							"\r",
+							"\r",
+							"tests[\"checking if the id of data[0]=1\"]=response.data[0].id==1;\r",
+							"tests[\"checkinf if the the third employee(data[2]) name is Ashton Cox\"]=response.data[2].employee_name==\"Ashton Cox\";\r",
+							"tests[\"checkinf if the the tenth employee(data[9]) name is Sonya Frost\"]=response.data[9].employee_name==\"Sonya Frost\";\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Viewing a single employee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employee/4",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
